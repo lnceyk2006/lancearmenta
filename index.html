@@ -6,8 +6,8 @@
     <title>Portfolio</title>
     <style>
         body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif;
-            background-image: url('images/ccs.jpg'); 
+            font-family: Arial, sans-serif;
+            background-image: url('images/ccs.jpg');
             background-size: cover;
             background-position: center;
             margin: 0;
@@ -16,7 +16,6 @@
             color: #333;
             position: relative;
         }
-    
         body::before {
             content: '';
             position: absolute;
@@ -24,7 +23,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7); 
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: 1;
         }
         .header, .profile-section, .slider {
@@ -32,7 +31,7 @@
             z-index: 2;
         }
         .header {
-            background-color: transparent; 
+            background-color: #5a3d2b;
             color: white;
             padding: 20px;
         }
@@ -41,9 +40,11 @@
             font-size: 2rem;
         }
         .profile-section {
-            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
             padding: 40px;
-            display: inline-block;
+            color: #fff;
         }
         .profile-section img {
             width: 150px;
@@ -51,31 +52,38 @@
             border-radius: 50%;
             object-fit: cover;
             transition: transform 0.5s;
+            margin-right: 20px; /* Space between the image and text */
         }
-        .profile-section img:hover {
-            transform: scale(1.2);
+        .profile-section h2, .profile-section p {
+            margin: 0; /* Reset margin */
         }
         .profile-section h2 {
-            margin-top: 15px;
             font-size: 2rem;
-            color: #fff; 
         }
         .profile-section p {
             font-size: 1.2rem;
-            color: #ccc; 
+            color: #ccc;
+        }
+        .show-link {
+            font-size: 1.5rem;
+            color: #5a3d2b;
+            text-decoration: none;
+            cursor: pointer;
+            margin-top: 20px;
         }
         .slider {
             overflow: hidden;
             white-space: nowrap;
             padding: 20px;
-            background-color: transparent; 
+            background-color: rgba(224, 215, 206, 0.7);
+            display: none; /* Initially hidden */
         }
         .slider-track {
             display: flex;
-            animation: slide 12s linear infinite; /* Adjusted to 12s for moderately fast scrolling */
+            animation: slide 20s linear infinite;
         }
         .slider-track:hover {
-            animation-play-state: paused; 
+            animation-play-state: paused;
         }
         .slider img {
             width: 220px;
@@ -83,47 +91,10 @@
             border-radius: 10px;
             margin: 0 10px;
             transition: transform 0.3s;
-            background-color: transparent; 
-            cursor: pointer;
         }
         .slider img:hover {
             transform: scale(1.2);
         }
-
-        
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            display: none; 
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-        }
-
-        .lightbox:target {
-            display: flex; 
-        }
-
-        .close-lightbox {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 2rem;
-            text-decoration: none;
-        }
-        
         @keyframes slide {
             0% {
                 transform: translateX(0);
@@ -140,43 +111,29 @@
     </div>
     <div class="profile-section">
         <img src="images/lancearmenta.jpg" alt="Mark Lance Armenta ID">
-        <h2>Mark Lance L. Armenta</h2>
-        <p>12-Tolerance</p>
-    </div>
-
-    <div id="lightbox" class="lightbox">
-        <a href="#" class="close-lightbox">&times;</a>
-        <img id="lightbox-img" src="" alt="Expanded View">
-    </div>
-
-    <div class="slider">
-        <div class="slider-track">
-            <img src="images/project1.jpg" alt="Project 1" onclick="openLightbox(this.src)">
-            <img src="images/project2.jpg" alt="Project 2" onclick="openLightbox(this.src)">
-            <img src="images/project3.jpg" alt="Project 3" onclick="openLightbox(this.src)">
-            <img src="images/project4.jpg" alt="Project 4" onclick="openLightbox(this.src)">
-            <img src="images/project5.jpg" alt="Project 5" onclick="openLightbox(this.src)">
-            <img src="images/project6.jpg" alt="Project 6" onclick="openLightbox(this.src)">
-            <img src="images/project7.jpg" alt="Project 7" onclick="openLightbox(this.src)">
-            <img src="images/project8.jpg" alt="Project 8" onclick="openLightbox(this.src)">
-            <img src="images/project9.jpg" alt="Project 9" onclick="openLightbox(this.src)">
-            <img src="images/project1.jpg" alt="Project 1" onclick="openLightbox(this.src)">
-            <img src="images/project2.jpg" alt="Project 2" onclick="openLightbox(this.src)">
-            <img src="images/project3.jpg" alt="Project 3" onclick="openLightbox(this.src)">
-            <img src="images/project4.jpg" alt="Project 4" onclick="openLightbox(this.src)">
-            <img src="images/project5.jpg" alt="Project 5" onclick="openLightbox(this.src)">
-            
+        <div>
+            <h2>Peace and All Good</h2>
+            <h2>Mark Lance L. Armenta</h2>
+            <p>12-Tolerance</p>
         </div>
     </div>
-
-    <script>
-        function openLightbox(src) {
-            document.getElementById('lightbox-img').src = src;
-            window.location.hash = 'lightbox'; 
-        }
-    </script>
+    <a class="show-link" onclick="toggleSlider()">Show/Hide Projects</a>
+    <div class="slider">
+        <div class="slider-track">
+            <img src="images/project1.jpg" alt="Project 1">
+            <img src="images/project2.jpg" alt="Project 2">
+            <img src="images/project3.jpg" alt="Project 3">
+            <img src="images/project4.jpg" alt="Project 4">
+            <img src="images/project5.jpg" alt="Project 5">
+            <img src="images/project6.jpg" alt="Project 6">
+            <img src="images/project7.jpg" alt="Project 7">
+            <img src="images/project8.jpg" alt="Project 8">
+            <img src="images/project9.jpg" alt="Project 9">
+        </div>
+    </div>
 </body>
 </html>
+
 
 
 
